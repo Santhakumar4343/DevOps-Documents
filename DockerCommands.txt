@@ -1,0 +1,93 @@
+
+To crete tag 
+docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+
+docker tag myimage:latest myrepository/myimage:v1.0
+
+To push tag into repository 
+docker push myrepository/myimage:v1.0
+
+To build docker image 
+How to check for Docker Client and Docker Server version
+docker version
+
+ How do you get the number of containers running, paused and stopped?
+docker info
+You can get the number of containers running, paused, stopped, the number of images and a lot more.
+
+ How to build a Dockerfile?
+ docker build path to docker file
+
+Once you’ve worked with an image, how do you push it to docker hub?
+ docker push username/image name
+
+How to pull an image from docker hub onto your local system
+docker pull image_name
+
+ How do you create a docker container from an image?
+ docker run -it -d  image_name 
+-d means the container needs to start in the detached mode. Logs will not be seen in command prompt rather it will run in background like daemon thread
+The -it (--interactive + --tty ) options tells Docker to keep the standard input attached to the terminal and starts the container in the interactive mode. 
+
+How do you list all the running containers
+docker ps
+docker ps -a - show all the running and exited containers
+
+ Suppose you have 3 containers running and out of these, you wish to access one of them. How do you access a running container?
+docker exec -it  container id  bash
+The following command lets us access a running container
+
+
+ How to debug / see logs of our Docker containers.
+docker logs  container_id 
+
+How to start, stop and kill a container?
+docker start  container_id 
+docker stop  container_id 
+docker kill  container_id 
+docker rm  container id  - delete a stopped container:
+
+
+How to delete an image from the local storage system?
+docker rmi  image-id 
+
+lists all the locally stored docker images
+docker images
+
+
+How  to know the details of the list of networks in the cluster
+docker network ls
+
+---------------------------
+dockerize spring boot +sql appln
+----------------------------------------------
+ pull mysql image 
+ docker pull mysql
+ 
+ create a network to communicate springboot app and mysql database 
+
+ docker network create spring-sql-net
+
+docker network ls
+
+To interact each other 
+docker run --name sqldb --network spring-sql-net -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=payroll -e MYSQL_USER=root -e MYSQL_PASSWORD=1234 -d mysql
+
+*** docker run --name mysqldb -P 3307:3306 --network spring-sql-net -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=payroll -d mysql
+
+docker exec -it 565347a31675<containerid> bash
+
+mysql -u<usename> -p<password>
+
+docker build -t payroll .
+
+docker run --network spring-sql-net --name spring-sql-container -p 8080:8080 -d payroll
+
+To know container ip addres
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_name_or_id>
+
+docker-compose up --build
+
+
+@@@@
+docker run -p 3307:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=1234 -d mysql

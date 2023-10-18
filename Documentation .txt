@@ -1,0 +1,65 @@
+
+Payroll
+-------
+Implemented service for innterviewer 
+------------------------------------
+->implemented service for interviewer to validate  interview rounds and getting status of interview
+Implemented  JDBC Authentication on PayRoll Project:
+---------------------------------------------------- 
+Successfully implemented JDBC authentication, enhancing project security with secure database authentication mechanisms.
+
+Implemented Cacheing in PayRoll
+-------------------------------
+Successfully implemented  caching using @Annotations based as well as redis cache also 
+
+Implemented loging in PayRoll using Log4j 
+-------------------------------------------
+Successfully implemented loging using log4j.
+
+Tested payroll using junit and mockito 
+--------------------------------------
+ Written  comprehensive test cases for the PayRoll project, 
+ validating its functionalities using JUnit and Mockito.
+ 
+ Integrated Code Coverage in Payroll Project:
+ ---------------------------------------------
+ Implemented code coverage analysis to track and measure the extent to which the Payroll project's 
+ codebase was exercised by tests,ensuring comprehensive testing and identifying areas for improvement. 
+  
+  
+  
+ Apt Card
+ --------
+ Implemented Cacheing in Apt Card:
+ -------------------------------
+ Cache implementation was completed for the Apt Card project, 
+ improving performance by reducing redundant data fetches.
+ 
+ Menu Card
+ ----------
+Implemented Cacheing in menu card
+-------------------------------
+Successfully implemented  caching using @Annotations based as well as redis cache also 
+
+Implemented loging in menu card using Log4j 
+-------------------------------------------
+Successfully implemented loging using log4j.
+
+Tested menu card using junit and mockito 
+--------------------------------------
+ Written  comprehensive test cases for the PayRoll project, 
+ validating its functionalities using JUnit and Mockito.
+ 
+ Integrated Code Coverage in menu card Project:
+ ---------------------------------------------
+ Implemented code coverage analysis to track and measure the extent to which the menu card project's 
+ codebase was exercised by tests,ensuring comprehensive testing and identifying areas for improvement.
+
+ Android Project
+ ---------------
+  -> Designed Hr dashboard 
+  -> validated login credentials 
+  -> Implemented navigation for hr screen icons  and buttons 
+  -> Implemented search funtionality of interview process in hr dashboard
+  -> handled job notifications in hr dashboard
+  -> Worked on admin registration 

@@ -1,0 +1,492 @@
+﻿linux commandS
+---------------
+
+whoami :Display logged in username
+pwd    : present working directory
+cd     :change directory
+mkdir  : Make directory
+rmdir  : Remove empty directory
+
+Note: If directory containts data then 'rm -r <dirname>'
+
+touch  :create empty file(s)
+cat    :create update/display files data
+
+Note: 'cat' command will read file from top to bottom where as 'tac' command will read file from bottom to top.
+
+rm  :Remove file
+mv  :To move & rename files and directoires
+cp  :copy data
+wc  :word count (lines, words and characters)
+head :Gives first 10 lines of file (10 is default)
+$head -n 20 <filename>
+(gives first 20 lines)
+tail : Gives last 10 lines of file
+
+grep global regular expression printer (it is for data finding)
+$ grep -i 'linux' <filename>      (Case-insensitive search)
+
+Invert match (display lines that do not match the pattern)
+$grep -v "pattern" filename
+
+vi Visual editor (to modifiy file content)
+$ vi <filename>
+insert mode => i
+save and quit => ESC and :wq
+quit without saving==> Esc and :q!
+-----------------------------------------------------
+
+Working with Linux File Permissions and User Accounts 
+-----------------------------------------------------
+-> A file can have 3 types permissions
+1) Read (r)
+2) Write (w)
+3) Execute (x)
+-> File permissions are divided into 3 secions
+
+Section-1: User permissions (first 3 characters represents user permissions)
+Section-2: Group Permissions (from 4th to 6th character represents group permissions) 
+Section-3: Others Permissions (From 7th to 9th character represents others permissions)
+
+-> rwxrwxrwx
+
+User --> having read, write & execute permissions
+Group --> having read, write & execute permissions
+Others --> having read, write & execute permissions
+
+-> rw-rw-r--
+
+User   --> read & write
+Group  --> read & write
+Others --> only read
+
+Modifying File Permissions
+--------------------------
+-> Using 'chmod' command we can change file permissions in Linux OS
+-> Using 'chmod' we can add and remove permissions
+
+# Add execute permission for the user
+$ chmod u+x ashokit.txt
+
+# Remove execute permission for the user
+$ chmod u-x ashokit.txt
+ 
+# Add execute permission for the group
+$ chmod g+x ashokit.txt
+
+# Add write permission for user
+$ chmod u+w ashokit.txt
+
+# Remove write permission for group
+$ chmod g-w ashokit.txt
+
+# Remove write & execute pemissions for the group
+$ chmod g-wx ashokit.txt
+
+# Add write and execute permission for the user
+$ chmod u+wx ashokit.txt
+
+# Add execute permission for others 
+$ chmod o+x ashokit.txt
+
+File Permissions with Numeric Numbers 
+-------------------------------------
+
+0 --> No permission
+1 --> Only Execute
+2 --> Only Write
+3 --> Execute & Write
+4 --> Only Read
+5 --> Read & Execute
+6 --> Read & Write
+7 --> Read, Write & Execute
+
+
+Working with User Accounts in Linux 
+----------------------------------
+-> Linux is a multi-user operating system
+-> With in one linux machine we can create multiple user accounts
+-> Multiple users can access one linux at a time and they can perform Multi-tasking
+
+Note: Every linux machine will have 'root' account (super user)
+
+-> When we launch a linux vm using 'Amazon Linux AMI' we will get 'ec2-user' as default user account
+
+#Switch to root user
+$ sudo su
+
+# create user
+$ sudo useradd
+
+#Delete User
+$ sudo userdel <user name>
+
+#verify user account details 
+$ id <username>
+
+# Create a group
+$ sudo groupadd <group name>
+
+#Add user to a group
+$ sudo usermod -aG  <group name> <username>
+
+# Remove user from the group
+$ sudo gpasswd -d <username> <group name>
+
+#Delete group
+$ sudo groupdel <group name>
+
+chown
+------
+-> 'chown' command is used to change file ownership
+-> We can see owner of the file using 'Is -I' command
+#changing owner of a file
+$ sudo chown <uname> <filename>
+-> We can change file owner using userID also
+$ sudo chown <UID> <filename>
+
+Note: We can get UID fo username using 'id uname' command
+#id <user Name>
+
+->change Group of file name 
+#sudo chown :<group name> <filename>
+
+Working with locate and find commands
+------------------------------------
+-> find and locate commands are used to search files in Linux Machine
+
+#search files which contains apache
+$ locate apache
+
+# search files and display count which contains apache
+$ locate -c apache
+
+# print all .txt files
+$ locate *.txt
+
+# print the count of all .txt files
+$ locate -c *.txt
+
+Note: In Linux, all the files and directories locations will be stored in local db i.e locate db. When we execute locate command it will search in locate db (it will not search in actual file system).
+->find command will search for the files and directories in actual linux file system
+
+->find command providing advanced searching techniques
+
+#find files under home directory
+$ find /home -name f1.txt
+
+# display only empty files
+$ sudo find /home -type f -empty
+
+# display only empty directories
+$ sudo find /home -type d -empty
+
+#Man command is used to know about the such commands like help 
+$ man locate
+$ man ping
+
+$ ifconfig: It is used to print ip address of our machine
+$ wget: It is used to download a file based on URL
+$ curl: It is used to send a request to URL
+$ ping: It is used to check network connectivity
+
+How to deploy static website in Linux Machine
+---------------------------------------------
+-> To run web applications we need webserver
+Note: httpd we can use as a webserver (It is apache webserver)
+httpd is a webserver package
+$ sudo yum update
+$ sudo yum install httpd  
+$ sudo service httpd start
+
+->To remove pakcage
+$sudo yum remove httpd    
+
+Note: Enable HTTP Protocol with 80 port in Security group of our EC2 instance.
+-> Ater enabling 80 port in security group we can access our website using EC2 instance public ip.
+
+#To change webpage content use below command 
+
+$ cd /var/www/html
+$ sudo vi index.html (write the content in index.html file and save it)
+
+-> Now access EC2 instance public ip in browser
+
+Package Manager
+---------------
+-> It is a tool that allows the users to install, remove, upgrade softwares on an operating system
+Ex: yum, apt, rpm, deb, chocklate etc........
+-> Linux Package Managers are used to install, remove, upgrade packages in linux os
+
+What is a package?
+------------------
+-> Package means it is one application
+Ex: httpd, git, maven, java, docker, jenkins etc......
+
+->RPM Based Linux Distributions: Amazon Linux, Red Hat Linux, Cent OS etc...
+Package Managers: yum, rpm, dnf
+
+->DEB based Linux Distributions: Ubuntu Linux, Debian Linux etc....
+Package Manager : apt
+
+Top 5 Package Managers
+--------------------
+1) YUM: Yellowdog Updater, Modified 
+2) APT : Advanced Packaging Tool
+3) RPM: Red Hat Package Manager
+4) DPKG: Debian Package Management System 
+5) DNF : Dandified YUM
+
+Q) How to install webserver in Red Hat Linux?
+$ sudo yum install httpd
+
+Q) How to install webserver in Ubuntu ? 
+$ sudo apt install apache2
+
+To install particular version 
+-----------------------------
+sudo yum install java-11-openjdk   
+ 
+note- give version properly
+
+How to install required softwares in Linux 
+------------------------------------------
+$ sudo yum install git
+$ git --version
+
+$ sudo yum install maven
+$ mvn -version
+
+$ sudo yum install java
+$ java -version
+ 
+Shell Scripting
+---------------
+What is shell ?
+-> Shell is responsible for reading commands given by user
+-> Shell will verify command and will give instructions to kernel to process that command
+-> If command is invalid shell will give error
+-> Kernel will execute our command with System Hard Components
+-> Shell acts as mediator between User and Kernel
+
+What is Scripting ?
+-------------------
+-> Scripting means set of commands mentioned in a file for execution
+-> Scripting is used to automate our routine work
+
+-> For example i want to execute below commands every day as a linux user
+$ date
+$ cal
+$ whoami
+$ pwd
+$ ls -l
+
+-> Instead of executing all these commands manually we can keep them in a file and we can execute that file.
+
+-> The file which contains set of commands for execution call "script file"
+
+Types of shells 
+---------------
+1)Bourne shell
+2)bash shell
+3)Korn shell
+3)c shell 
+4)t shell
+5)z shell
+
+->Display all shell in linux
+$ cat /etc/shells
+
+->Display the current shell or default
+$ echo $SHELL
+
+Note-> commanly used shell is "bash"
+       shell script will have .sh extension
+	
+	
+->What is SHA-BANG in shell script? 
+          
+-> SHA-BANG is used to specify which shell should be used to process our script
+
+Syntax :
+#!/bin/bash
+
+Simple Shell script file 
+-------------------------
+Creae a file with extension
+ vi scriptfile.sh
+ 
+ In that file create commmands like
+ 
+ whoami
+ date 
+ cal 
+ touch scriptfile.txt 
+ mkdir linux 
+ 
+->after saving execute or run scriptfile like 
+ sh <filename.sh>
+ 
+->are enable execute permission like u+x 
+ ./<filename.sh>
+ 
+Example Shell script
+--------------------
+echo "enter first number"
+read a
+echo "enter second number"
+read b
+c=$((a+b))
+echo "Sum of $a and $b is $c"
+
+
+
+-> Variables are place-holders to store the value
+-> Varibles are key-value pairs
+-> In Shell Scripting there is no concept of Data Type.
+-> Every value will be treated as text/string
+Ex:
+name ashok
+age=30
+email-ashokitschool@gmail.com
+phno=1234
+
+
+1) Environment Variables or System variables
+2) User Defined Variables
+-> The variables which are already defined and using by our system are called as Environment/System variables
+Ex:
+$ echo $USER
+$ echo $SHELL
+
+-> Based on our requirement we can define our own variables those are called as user defined variables
+Ex:
+name=ashok 
+age=30
+
+Variables Rules 
+---------------
+1) should not use  the special characters like @,-,# etc
+2) Dont start with the numbers
+
+->note: Recommended to write uppercase letters 
+ AGE insted of age
+
+-> When we use 'readonly' it is not allowed to modify the variable value
+
+
+Command Line Arguments
+----------------------
+
+->The arguments which will pass to  the script file at the time of execution 
+->The Cmd arguments used to supply  the values dynamically to the script file 
+$# number of arguments
+$0 script file name
+$1 first argument
+$2 second argument
+$3 third argument
+$* all arguments
+
+
+-> '#' is used to comment single line in script file 
+
+-> To use multiline command in script file 
+
+syntax is :-
+<<COMMENT
+echo $3
+echo $*
+COMMENT
+
+->We Can hold/pause execution of script some time by using 'sleep'  
+ sleep 30s
+ 
+ conditional statements
+ ------------------------
+ These arte used to execute commands based on conditions 
+ 
+ if[condition]
+ then 
+   stmt
+ else 
+   stmt
+  
+
+if[condition]
+ then 
+   stmt
+elif[condition]
+ then 
+   stmt
+ else 
+   stmt
+     
+example:
+--------
+1)#!/bin/bash
+echo "Enter the color you love"
+read COLOR
+
+if [ "$COLOR" == "red" ]; then
+    echo "You are rude"
+else
+    echo "You are cute"
+fi
+
+2)
+#!/bin/bash
+echo "Enter the number"
+read NUMBER
+
+if [ "$NUMBER" -ge 10 ]; then
+    echo "Number is two digits."
+elif [ "$NUMBER" -ge 100 ]; then
+    echo "Number is three digits."
+else
+    echo "Number is a single digit."
+
+   
+   
+   
+   
+   
+   
+   
+   
+ -> To know what ports are running in my machine
+ netstat -an |grep "LISTEN"
+ 
+To setUp Tomcat in Ec2 instance 
+-------------------------------
+->sudo yum install java
+
+install maven tar using wget command
+->wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz
+ 
+Extract the tar file 
+
+->tar -xvzf apache-tomcat-9.0.80.tar.gz
+
+-> Remove tar file 
+rm -f apache-tomcat-9.0.80.tar.gz
+
+->move to the directory 
+cd tomcat.9.0.80/
+->move to bin
+ cd /bin/
+->run the startup shell file 
+sh startup.sh
+
+->To change Prot of tomcat got to conf directory 
+
+cd conf 
+->in conf directory one server.xml file is there 
+nano server.xml
+
+change and restart 
+
+
+
+<tomcat-users>
+	  <user username="root" password="1234" roles="manager-gui"/>
+	</tomcat-users>

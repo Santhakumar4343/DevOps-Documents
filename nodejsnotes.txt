@@ -1,0 +1,84 @@
+
+
+
+//Install node check vesrion
+
+create on separate folder and open that in vs code and create .js file and write the code 
+
+to run the application 
+ node <filename.js>
+ 
+ File System in node 
+To display file content in browser 
+----------------------------------
+var http=require("http")
+var fs=require("fs")
+
+http.createServer((req,res)=>{
+  fs.readFile("text.txt",(err,data)=>{
+  res.write(data);
+  res.end();
+  })
+}).listen(8080);  
+ 
+To add new data to the file 
+-----------------------------------
+var http=require("http")
+var fs=require("fs")
+
+http.createServer((req,res)=>{
+  fs.appendFile("text.txt","lkjlkjhlkjhlkjhlkjljl",(err,data)=>{
+  res.write(data);
+  res.end();
+  })
+}).listen(8080);  
+
+To over ride data in existing file 
+-----------------------------------
+ 
+ var http=require("http")
+var fs=require("fs")
+
+http.createServer((req,res)=>{
+  fs.writeFile("text.txt", 'Hello content!',(err,data)=>{
+  res.write(data);
+  res.end();
+  })
+}).listen(8080);
+
+ To delete file 
+----------------------------------
+
+var http=require("http")
+var fs=require("fs")
+
+http.createServer((req,res)=>{
+  fs.unlink("text.txt",err=>{
+    if(err) throw err;
+  })
+}).listen(8080);  
+
+To rename file 
+--------------------------------
+var fs = require('fs');
+
+fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {
+  if (err) throw err;
+  console.log('File Renamed!');
+});
+
+
+------------------------------------------
+Url in node js 
+------------------------------------------
+var url = require('url');
+var adr = 'http://localhost:8080/default.htm?year=2017&month=february';
+var q = url.parse(adr, true);
+
+console.log(q.host); //returns 'localhost:8080'
+console.log(q.pathname); //returns '/default.htm'
+console.log(q.search); //returns '?year=2017&month=february'
+
+var qdata = q.query; //returns an object: { year: 2017, month: 'february' }
+console.log(qdata.month); //returns 'february'
+console.log(qdata); //returns 'february'

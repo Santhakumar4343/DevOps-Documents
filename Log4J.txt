@@ -1,0 +1,12 @@
+log4j.rootLogger=DEBUG,sys
+log4j.appender.sys=org.apache.log4j.FileAppender
+log4j.appender.sys.File=D:/log4j/data.log
+log4j.appender.sys.layout=org.apache.log4j.PatternLayout
+log4j.appender.sys.layout.ConversionPattern=%d{yyyy-mmm-dd hh-mm} [ %p ] %c  {-%M-}  %m  %L %n
+
+
+
+private static Logger log=Logger.getLogger(AddEmployeeController.class);
+ log.debug("This method from AddEmployeeController which is used to save employee details");
+ log.debug("This method from AddEmployeeController which is used to get employee details by id");
+ 

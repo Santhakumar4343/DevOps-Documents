@@ -1,0 +1,21 @@
+Good morning!
+
+Hai, my name is Santha Kumar. Thank you for giving me this opportunity to introduce myself.
+
+I am currently staying in Hyderabad but born and brought up in Andhra Pradesh.
+I graduated in 2022 with a BSc degree, achieving a commendable 7.6 CGPA, from Sir CR Reddy (A) Degree College.
+
+I love watching movies based on real stories, reading books.
+
+I consider myself a good listener and believe in understanding people before expressing my thoughts.
+
+Being emotional is one of my qualities that both enriches and sometimes bothers me.
+
+In my family, there are four members, including me. My father is a farmer,
+ my mother is a proud homemaker, and I have an elder brother who is employed at Skylark Company, working in network marketing.
+
+As for my project, I recently completed a Payroll Management System.
+ The project involved developing a comprehensive web application using Spring Boot for the backend and React for the frontend.
+ It provided a centralized platform for managing various aspects of the employee lifecycle, 
+ from candidate hiring to employee information management. I thoroughly enjoyed being part of the team and
+ contributing as a Java Developer to enhance the system's performance and data security.
