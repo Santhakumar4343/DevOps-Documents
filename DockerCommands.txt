@@ -47,6 +47,14 @@ docker stop  container_id
 docker kill  container_id 
 docker rm  container id  - delete a stopped container:
 
+To display docker containers 
+docker ps 
+
+to display sotped containers 
+docker ps -a
+
+To remove container 
+docker rm <containerId>
 
 How to delete an image from the local storage system?
 docker rmi  image-id 
@@ -91,3 +99,70 @@ docker-compose up --build
 
 @@@@
 docker run -p 3307:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=1234 -d mysql
+
+
+
+
+To install  docker on ubuntu
+curl  -fsSL  get.docker.com  | /bin/bash
+
+To run the docker container 
+
+docker run -p 3400:8081 ashokit/spring-boot-rest-api
+-p <host-port>:<container-port>
+
+To run the docker container ditached mode 
+
+docker run -d -p 3400:8081 ashokit/spring-boot-rest-api
+
+note* -d indicates that ditached mode 
+
+
+Dockerfile
+----------
+FROM 
+MAINTAINER
+COPY
+WORKDIR
+RUN
+CMD
+EXPOSE
+ENTRYPOINT
+VOLUME
+ARG
+
+=> FROM is used to specify base image to create our image
+FROM open-jdk:11
+FROM python:3.3
+FROM tomcat:9.5
+FROM node:15.1
+
+=> MAINTAINER is used to specify Dockerfile Author
+MAINTAINER Ashok<ashok@gmail.com>
+
+=> COPY is used to copy the files from source to destination
+
+COPY target/sb-api.jar  /usr/app/sb-api.jar
+COPY target/app.war  /usr/tomcat/webapps/app.war
+
+=> ADD is used to copy the files from source to destination
+ADD   <url>  /usr/tomcat/webapps/app.war
+
+note* s3 bucket url like 
+
+=>RUN is used to execute instructions while creating docker image
+
+ # Install app dependencies  || single 
+   RUN npm install
+   
+ # Install app dependencies  || Multiple 
+  RUN npm install -g some-package && \
+      npm install -g another-package && \
+      apt-get update && \
+      apt-get install -y some-package-for-apt
+	  
+	 
+
+=>RUN is used to execute instructions while creating docker container
+
+  CMD java -jar <jarFileName>
