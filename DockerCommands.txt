@@ -63,6 +63,12 @@ lists all the locally stored docker images
 docker images
 
 
+docker system prune -a 
+
+command is used to remove all unused Docker objects, including images, containers, networks,and volumes. 
+The -a flag, in this context, means "all," and it will remove all unused objects, not just those that are not associated with a container.
+
+
 How  to know the details of the list of networks in the cluster
 docker network ls
 
@@ -97,8 +103,6 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <con
 docker-compose up --build
 
 
-@@@@
-docker run -p 3307:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=1234 -d mysql
 
 
 
@@ -166,3 +170,10 @@ note* s3 bucket url like
 =>RUN is used to execute instructions while creating docker container
 
   CMD java -jar <jarFileName>
+
+EXPOSE 
+-> Is used to specify the container port number on which port number containes is running 
+
+ENTRYPOINT
+-> Is user to execute instructions while creating container 
+  ex:-  ENTRYPOINT ["java" "-jar" "sbapp.jar"] 
