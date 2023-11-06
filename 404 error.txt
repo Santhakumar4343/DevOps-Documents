@@ -1,0 +1,56 @@
+Set up an .htaccess file:
+-------------------------
+
+Create an .htaccess file in the root directory of your React or angular application.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+2)Enable the mod_rewrite module:
+--------------------------------
+Ensure that the mod_rewrite module is enabled in your Apache configuration. 
+Run the following command to enable it:
+
+$sudo a2enmod rewrite
+
+Then, restart Apache to apply the changes:
+
+sudo systemctl restart apache2
+
+3)Check your Virtual Host Configuration:
+----------------------------------------
+navigate to this file path   /etc/httpd/conf/httpd.conf 
+
+path for httpd is /var/www/html   
+<Directory /path/to/your/react/app>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+------------------
+for ngnix is 
+-------------------
+
+Main Nginx configuration: The main configuration file is often located at /etc/nginx/nginx.conf. This file contains global settings for Nginx.
+
+Server block configuration: Instead of a single monolithic file like httpd.conf, Nginx uses server block configurations. These configurations can be found in separate files within the /etc/nginx/conf.d/ or /etc/nginx/sites-available/ directories (depending on the Linux distribution).
+server {
+    listen 80;
+    server_name your-domain.com;  # Replace with your actual domain or IP address
+
+    location / {
+        root /var/www/html;  # Path to your React app's build files
+        index index.html;
+        try_files $uri /index.html;
+    }
+}
+
+
+
