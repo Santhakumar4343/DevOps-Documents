@@ -454,8 +454,20 @@ BitBucket
 
 
 
+To clone git using ssh  you need to generate key pair
+-----------------------------------------------------
 
+$ ssh-keygen -t rsa
 
+Go to this path for rsa.pup
+
+$ cd /c/Users/PC/.ssh/
+
+Copy the content of rsa.pup and paste in the ssh new key 
+
+the key you can get in the path 
+
+Go to -> git hub -> settings -> ssh &gpg keys ->new ssh key -> provide titile <id_rsa.pup> key as copy the content of id_rsa.pup copy in the key 
 
 
 
