@@ -346,6 +346,12 @@ git merge vs git rebase
 
 -> Once sprint-1 is delivered then we want to take latest code of sprint-1 to start sprint-2 development. In this scenario we don't need commit history so we will use 'git rebase' command.
 
+Use git merge when you want to create a merge commit that represents the integration of an entire branch into another branch. It's suitable for feature branches and when you want to maintain a clear history of merge points.
+
+Use git rebase when you want to maintain a linear and cleaner commit history. It's useful for feature branches but should be used with caution in shared branches to avoid rewriting history.
+
+Use git cherry-pick when you want to pick specific commits from one branch and apply them to another. This is handy for incorporating specific changes or bug fixes without affecting the entire branch's history.
+
 ===========================
 What is git pull command 
 ===========================
