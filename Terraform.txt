@@ -1,0 +1,51 @@
+Terraform 
+---------
+->This will get at terraform official website
+
+To install terroform In Ubuntu ec2 
+
+ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+ sudo apt update && sudo apt install terraform
+
+->To know terraform version 
+
+  terraform -v
+  
+ Basic Terraform script to create a ec2 instance
+------------------------------------------------- 
+ 
+ provider "aws" {
+  region = "ap-south-1"
+  access_key=""
+  sceret_key=""
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0a7cf821b91bcccbc"
+  instance_type = "t2.micro"
+  key_name      = "Terraform"  
+
+  tags = {
+    Name = "Terraform-Demo"
+  }
+}
+
+ Terraform commands
+ ------------------
+ Terraform init    --> To initlize terroform 
+ 
+ Terraform validate---> to validate script
+ 
+ Terraform fmt     ---> to formate script
+ 
+ Terraform plan    ---> to plan the script
+ 
+ Terraform apply   ---> to apply the script
+ 
+ Terraform destory ---> to destory the infrastructure
+
+->When your are hit the apply command **terraform.tfstate file will be create it will have the Script execution details.
+  

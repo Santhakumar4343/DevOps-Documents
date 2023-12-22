@@ -1,0 +1,58 @@
+
+Ansible
+-------
+To install Ansible in ec2 ubuntu instance
+ 
+-> sudo apt install ansible
+
+To check version 
+ 
+-> ansible --version
+
+Ansible is used for configuration management to talk with other servers first we need to enable *Password less Authentication*
+
+First generate public key with using *ssh-keygen* in the ansible server  
+-> ssh-keygen 
+ cd ~/.ssh/id_rsa.pub
+ copy the content of id_rsa.pub
+ 
+ *Switch to the Another generate authorize keys using the 
+-> ssh-keygen
+  vi ~/.ssh/authorize-keys
+  
+  paste the id_rsa.pub of the Ansible server
+ 
+*Create  a one inventory file in the home directory  of ansible server and add private ip address of the other servers in the inventory file
+  
+For small tasks we use ansible adhoc command the command is
+* ansible -i inventory all  -m "shell"  -a "touch m1.txt"
+           
+ -m indicates that the mode 
+ -a indicates that the action 
+
+Ansible Play book
+----------------- 
+Ansible play book will be written in the yaml formate 
+
+---
+- name: Install and start Httpd
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install httpd
+      apt:
+        name: nginx 
+        state: present
+
+    - name: Start httpd
+      service:
+        name: nginx  
+        state: started
+		
+  --- indicates the this is the yaml file 
+    - indicates the list 
+  
+ 
+
+  
